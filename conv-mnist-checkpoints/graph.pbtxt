@@ -5843,6 +5843,73 @@ node {
   }
 }
 node {
+  name: "Const"
+  op: "Const"
+  input: "^add"
+  attr {
+    key: "_output_shapes"
+    value {
+      list {
+        shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "cost"
+  op: "Mean"
+  input: "sparse_softmax_cross_entropy_loss/value"
+  input: "Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_output_shapes"
+    value {
+      list {
+        shape {
+        }
+      }
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
   name: "gradients/Shape"
   op: "Const"
   input: "^add"
@@ -12564,7 +12631,7 @@ node {
         dtype: DT_STRING
         tensor_shape {
         }
-        string_val: "_temp_5c23aa621e8743a8bec1c2f25454e3b7/part"
+        string_val: "_temp_feeb367ee39d48e9bfb32f5a9681719e/part"
       }
     }
   }
